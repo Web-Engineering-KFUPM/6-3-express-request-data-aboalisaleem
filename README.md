@@ -1,6 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/f7Xq_C38)
 # Lab: Express Request Data 
 
+
 ## Short Overview
 In this lab you will practice reading **request data** in Express: query‑string parameters, route parameters, and simple middleware that validates/normalizes input. You’ll implement a small API that echoes values, composes names, and validates numeric parameters.
 
