@@ -107,6 +107,10 @@ LAB SETUP INSTRUCTIONS
 import express from "express";
 const app = express();
 
+// Root route
+app.get("/", (req, res) => {
+  res.json({ ok: true, message: "API is running" });
+});
 
 // create server
 
@@ -124,11 +128,23 @@ app.get("/echo", (req, res) => {
 
 // Route params: /profile/First/Last
 
+app.get("/profile/:first/:last", (req, res) => {
+  const { first, last } = req.params;
+  return res.json({ ok: true, fullName: `${first} ${last}` });
+});
+
 
 // Route param middleware example: /users/42
-
+app.param("userId", (req, res, next, userId) => {
+  const n = Number(userId);
+  if (!Number.isFinite(n) || n <= 0) {
+    return res.status(400).json({ ok: false, error: "userId must be positive number" });
+  }
+  req.userIdNum = n;
+  next();
+});
 
 // Route params: /users/:userId route
-
-
-
+app.get("/users/:userId", (req, res) => {
+  return res.json({ ok: true, userId: req.userIdNum });
+});
